@@ -37,3 +37,18 @@ const walls=[
     })
 ];
 World.add(world,walls);
+
+let rows =3;
+let cols =3;
+
+const grid = Array(rows)
+.fill(null)
+.map(() => Array(cols).fill (false) );
+
+const verticals = Array(rows)
+.fill(null)
+.map(() => Array(cols-1).fill (false) );
+
+const horizontals = Array(rows-1)
+.fill(null)
+.map(() => Array(cols-1).fill (false) );
