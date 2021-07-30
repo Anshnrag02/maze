@@ -52,3 +52,6 @@ const verticals = Array(rows)
 const horizontals = Array(rows-1)
 .fill(null)
 .map(() => Array(cols-1).fill (false) );
+
+const startRow = Math.floor(Math.random())*rows;
+const startCol = Math.floor(Math.random())*cols;
