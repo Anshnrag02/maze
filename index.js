@@ -7,6 +7,7 @@ const {Engine,
 
 const width =600;
 const height= 600;
+const border=40;
 
 const engine =Engine.create();
 const {world}=engine;
@@ -23,16 +24,16 @@ Runner.run(Runner.create(), engine);
 
 // walls
 const walls=[
-    Bodies.rectangle(width/2,0,width,40, {
+    Bodies.rectangle(width/2,0,width,border, {
         isStatic: true,
     }),
-    Bodies.rectangle(width/2,height,width,40, {
+    Bodies.rectangle(width/2,height,width,border, {
         isStatic: true,
     }),
-    Bodies.rectangle(width,height/2,40,height, {
+    Bodies.rectangle(width,height/2,border,height, {
         isStatic: true,
     }),
-    Bodies.rectangle(0,height/2,40,height, {
+    Bodies.rectangle(0,height/2,border,height, {
         isStatic: true,
     })
 ];
@@ -54,8 +55,8 @@ const shuffle = (arr) =>{
 let rows =8;
 let cols =8;
 
-const unitLengthX = width/cols;
-const unitLengthY = height/rows;
+const unitLengthX = (width-border)/cols;
+const unitLengthY = (height-border)/rows;
 
 const grid = Array(rows)
 .fill(null)
@@ -133,10 +134,10 @@ horizontals.forEach((row,rowIndex)=>{
         }
 
         const wall = Bodies.rectangle(
-            columnIndex*unitLengthX + unitLengthX/2,
-            rowIndex*unitLengthY+unitLengthY,
+            columnIndex*unitLengthX + unitLengthX/2 +20,
+            rowIndex*unitLengthY+unitLengthY +20,
             unitLengthX,
-            10,
+            0.004*height,
             {
                 isStatic: true
             }
@@ -152,9 +153,9 @@ verticals.forEach((row,rowIndex)=>{
         }
 
         const wall = Bodies.rectangle(
-            columnIndex*unitLengthX + unitLengthX,
-            rowIndex*unitLengthY+unitLengthY/2,
-            10,
+            columnIndex*unitLengthX + unitLengthX + border/2,
+            rowIndex*unitLengthY+unitLengthY/2 + border/2,
+            0.004*width,
             unitLengthY,
             {
                 isStatic: true
@@ -163,3 +164,7 @@ verticals.forEach((row,rowIndex)=>{
         World.add(world,wall);
     });
 });
+
+const goal = Bodies. rectangle(
+    
+)
